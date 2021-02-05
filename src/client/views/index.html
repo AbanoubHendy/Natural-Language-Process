@@ -3,35 +3,39 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
+        <link 
     </head>
 
-    <body>
-
+    <body style="background-image: url(/src/client/images/natural-language-processing-1110x831-1.png);">
         <header>
-            <div class="">
-                Logo
+            <div class="Logo-Image">
+                <img src="/src/client/images/LogoMeaningCloud650x264.png">
             </div>
-            <div class="">
-                navigation
+            <nav class="navbar__menu">
+                <ul id="navbar__list">
+                    <li > <a>Home</a> </li>
+                    <li > <a>About</a> </li>
+                    <li > <a>Contact Us</a> </li>
+                </ul>
             </div>
         </header>
 
         <main>
-            <section>
-                <form class="" onsubmit="return handleSubmit(event)">
+            <section class="formSec">
+                <form class="Subform" onsubmit="return Client.handleSubmit(event)">
                     <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                    <input id="SUBMIT" type="submit" name="" value="SUBMIT" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             </section>
 
-            <section>
+            <section class="resultForm">
                 <strong>Form Results:</strong>
                 <div id="results"></div>
             </section>
         </main>
 
-        <footer>
-            <p>This is a footer</p>
+        <footer class="page__footer">
+            <p id="footpara">MeaningCloud @Copyright 2020/2021</p>
         </footer>
 
     </body>

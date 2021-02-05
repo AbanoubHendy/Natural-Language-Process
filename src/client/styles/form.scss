@@ -1,12 +1,52 @@
-form {
-    border: 1px solid #545454;
-    border-radius: 3px;
-    padding: 40px;
-}
-
-input {
+$font-primary: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+$font-secondary: Georgia, 'Times New Roman', Times, serif;
+$font-italic-style: italic;
+$primary-color: red;
+%input-shared{
     padding: 5px 20px;
     width: 100%;
-    line-height: 16px;
     margin: 10px 0;
 }
+
+section.formSec {
+    background-color:orange;
+    margin: auto;
+    margin-top: 120px;
+}
+
+form.Subform {
+    border: 2px solid #545454;
+    padding: 60px;
+}
+
+input#name{
+    @extend %input-shared;
+    font-family: $font-primary;
+    font-style: $font-italic-style;
+    height: 50px;
+    font-size: 1.2em;
+}
+
+input#SUBMIT{
+    @extend %input-shared;
+    font-family: $font-secondary;
+    background-color:crimson;
+    height: 60px;
+    font-size: 1.7em;
+}
+
+section.resultForm{
+    margin: auto;
+    background-color: darkblue;
+    margin-top: 50px;
+    height: 30vh;
+    opacity: 0.9;
+    color:white;
+    margin-bottom: 70px;
+    font-family: 100% $font-primary;
+    font-size: 1.7em;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+

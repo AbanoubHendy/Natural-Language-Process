@@ -1,5 +1,30 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 40px;
+    background-color:#90ee90;
+    opacity: 0.4;
+    height: 4.5em;
+}
+.Logo-Image img{
+    height: 50px;
+    width: 200px;
+    margin-right: 250px;
+    margin-top: 12px;
+    margin-left: 50px;
+    float: left;
+}
+.navbar__menu {
+    ul{
+        width: 50%;
+        float: right;
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 20px;
+        list-style:none;
+        cursor: pointer;
+    }
+    li a {
+        font-size: 1.7em;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 0.7em;
+    }
 }
