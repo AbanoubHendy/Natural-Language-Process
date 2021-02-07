@@ -6,10 +6,10 @@
         <link 
     </head>
 
-    <body style="background-image: url(/src/client/images/natural-language-processing-1110x831-1.png);">
+    <body style="background-image: url(./images/natural-language-processing-1110x831-1.png);">
         <header>
             <div class="Logo-Image">
-                <img src="/src/client/images/LogoMeaningCloud650x264.png">
+                <img src="./images/LogoMeaningCloud650x264.png">
             </div>
             <nav class="navbar__menu">
                 <ul id="navbar__list">
@@ -37,6 +37,14 @@
         <footer class="page__footer">
             <p id="footpara">MeaningCloud @Copyright 2020/2021</p>
         </footer>
-
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+           </script>
     </body>
 </html>
