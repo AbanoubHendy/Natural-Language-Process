@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 var path = require('path')
 const express = require('express')
+const cors = require('cors')
 const mockAPIResponse = require('./mockAPI.js')
 const apiKey = process.env.API_KEY;
 var https = require('follow-redirects').https;
@@ -9,7 +10,9 @@ var fs = require('fs');
 console.log(`Your API key is ${process.env.API_KEY}`);
 
 
+
 const app = express()
+app.use(cors())
 
 app.use(express.static('dist'))
 
