@@ -58,6 +58,7 @@ app.post('/addData' , addData);
 fetch('/sentiment-2.1?key=186c9dd70631cf3585378167bad6b588&lang=<lang>&txt=<text>&model=<model')
 function addData(req , res) {
     EntryData={
+        Result: req.body.result,
         Irony: req.body.irony,
         Agreement: req.body.agreement,
         Confidence: req.body.confidence,

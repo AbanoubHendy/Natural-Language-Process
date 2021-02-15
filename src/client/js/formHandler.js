@@ -11,8 +11,8 @@ function handleSubmit(event) {
     console.log("::: Form Submitted :::")
     fetch('http://localhost:8081/test')
     .then(res => res.json())
-    .then(function(res) {
-        postData('/addData' , {userInput});
+    .then(function(data) {
+        postData('/addData' , {result:data.userInput});
         UpdateUI();
     })
 }
@@ -41,6 +41,7 @@ const UpdateUI = async ()=> {
     const res = await fetch('/test');
     try{
         const alldata = await res.json();
+        document.getElementById('Result').innerHTML=alldata.result;
         document.getElementById('Irony').innerHTML=alldata.irony;
         document.getElementById('Agreement').innerHTML=alldata.agreement;
         document.getElementById('Confidence').innerHTML=alldata.confidence;
