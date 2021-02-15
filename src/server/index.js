@@ -8,11 +8,10 @@ const apiKey = process.env.API_KEY;
 var https = require('follow-redirects').https;
 var fs = require('fs');
 console.log(`Your API key is ${process.env.API_KEY}`);
-
-
-
 const app = express()
 app.use(cors())
+
+projectData = {};
 
 app.use(express.static('dist'))
 
@@ -29,7 +28,7 @@ app.listen(8081, function () {
 })
 
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+    res.send(projectData)
 })
 
 var options = {
@@ -54,5 +53,17 @@ var req = https.request(options, function (res) {
     });
 });
 req.end();
+
+app.post('/sentiment-2.1?key=186c9dd70631cf3585378167bad6b588&lang=<lang>&txt=<text>&model=<model>' , addData);
+function addData(req , res) {
+    EntryData={
+        Irony: req.body.irony,
+        Agreement: req.body.agreement,
+        Confidence: req.body.confidence,
+        Subjectivity: req.body.subjectivity,
+        Score_tag: req.body.score_tag
+    }
+    projectData=EntryData;
+}
 
 

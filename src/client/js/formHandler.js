@@ -1,37 +1,39 @@
 import { response } from "express"
 
+const userInput = document.getElementById('InputBox').value
+
 function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    Client.checkForName(formText)
+    Client.checkForName(userInput)
 
     console.log("::: Form Submitted :::")
     fetch('http://localhost:8081/test')
     .then(res => res.json())
     .then(function(res) {
-        postData();
+        document.getElementById('results').innerHTML = res.message;
+        postData('/sentiment-2.1?key=186c9dd70631cf3585378167bad6b588&lang=<lang>&txt=<text>&model=<model>' , {res});
         UpdateUI();
-    });
+    })
 }
 
-const postData = async (url = '' , formText = {})=>{
-    console.log(data);
-    const res = await fetch('http://localhost:8081/test', {
+const postData = async (url = '' , userInput = {})=>{
+    console.log(userInput);
+    const res = await fetch(url , {
         method: 'POST',
         credentials: 'same-origin' ,
         headers: {
             'Content-Type' : 'application/json' ,
         },
-        body: JSON.stringify(formText),
+        body: JSON.stringify(userInput),
     });
 }
 
 const UpdateUI = async ()=> {
-    const request = await fetch('/test');
+    const response = await fetch('/test');
     try{
-        const alldata = await request.json();
+        const alldata = await response.json();
         document.getElementById('Irony').innerHTML=alldata.irony;
         document.getElementById('Agreement').innerHTML=alldata.agreement;
         document.getElementById('Confidence').innerHTML=alldata.confidence;
