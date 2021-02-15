@@ -31,9 +31,9 @@ const postData = async (url = '' , userInput = {})=>{
 }
 
 const UpdateUI = async ()=> {
-    const response = await fetch('/test');
+    const res = await fetch('/test');
     try{
-        const alldata = await response.json();
+        const alldata = await res.json();
         document.getElementById('Irony').innerHTML=alldata.irony;
         document.getElementById('Agreement').innerHTML=alldata.agreement;
         document.getElementById('Confidence').innerHTML=alldata.confidence;
