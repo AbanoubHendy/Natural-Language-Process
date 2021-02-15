@@ -18,15 +18,15 @@ function handleSubmit(event) {
     })
 }
 
-const postData = async (url = '' , userInput = {})=>{
-    console.log(userInput);
+const postData = async (url = '' , data = {})=>{
+    console.log(data);
     const res = await fetch(url , {
         method: 'POST',
         credentials: 'same-origin' ,
         headers: {
             'Content-Type' : 'application/json' ,
         },
-        body: JSON.stringify(userInput),
+        body: JSON.stringify(data),
     });
     try{
         const newData = await res.json();
