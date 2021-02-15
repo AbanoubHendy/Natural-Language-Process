@@ -13,7 +13,7 @@ function handleSubmit(event) {
     .then(res => res.json())
     .then(function(res) {
         document.getElementById('results').innerHTML = res.message;
-        postData('/sentiment-2.1?key=186c9dd70631cf3585378167bad6b588&lang=<lang>&txt=<text>&model=<model>' , {res});
+        postData('/addData' , {res});
         UpdateUI();
     })
 }
