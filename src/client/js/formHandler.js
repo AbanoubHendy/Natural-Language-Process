@@ -28,7 +28,15 @@ const postData = async (url = '' , userInput = {})=>{
         },
         body: JSON.stringify(userInput),
     });
+    try{
+        const newData = await res.json();
+        console.log(newData);
+        return newData;
+    }catch(error) {
+        console.log('Therre Is An Error' , error)
+    }
 }
+
 
 const UpdateUI = async ()=> {
     const res = await fetch('/test');
