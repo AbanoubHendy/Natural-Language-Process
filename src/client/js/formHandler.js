@@ -12,8 +12,7 @@ function handleSubmit(event) {
     fetch('http://localhost:8081/test')
     .then(res => res.json())
     .then(function(res) {
-        document.getElementById('results').innerHTML = res.message;
-        postData('/addData' , {res});
+        postData('/addData' , {userInput});
         UpdateUI();
     })
 }
