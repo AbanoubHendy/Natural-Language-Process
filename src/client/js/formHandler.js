@@ -14,9 +14,9 @@ function handleSubmit(event) {
     })
 }
 
-const postData = async (url = "http://localhost:8081/addData" , data = {})=>{
+const postData = async (url = "http://localhost:8081/add" , data = {})=>{
     console.log(data);
-    const res = await fetch('http://localhost:8081/addData' , {
+    const res = await fetch('http://localhost:8081/add' , {
         method: 'POST',
         credentials: 'same-origin' ,
         headers: {

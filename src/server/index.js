@@ -28,44 +28,27 @@ app.listen(8081, function () {
 })
 
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+    res.send(projectData)
 })
 
-var options = {
-    'method': 'POST',
-    'hostname': 'api.meaningcloud.com',
-    'path': '/sentiment-2.1?key=186c9dd70631cf3585378167bad6b588&lang=<lang>&txt=<text>&model=<model>',
-    'headers': {
-    },
-    'maxRedirects': 20
-};
-var req = https.request(options, function (res) {
-    var chunks = [];
-    res.on("data", function (chunk) {
-      chunks.push(chunk);
-    });
-    res.on("end", function (chunk) {
-        var body = Buffer.concat(chunks);
-        console.log(body.toString());
-    });
-    res.on("error", function (error) {
-        console.error(error);
-    });
-});
-req.end();
-
-app.post('/addData' , addData);
-function addData(req , res) {
-    fetch('/sentiment-2.1?key=186c9dd70631cf3585378167bad6b588&lang=<lang>&txt=<text>&model=<model')
-    EntryData={
-        Irony: req.body.irony,
-        Agreement: req.body.agreement,
-        Confidence: req.body.confidence,
-        Subjectivity: req.body.subjectivity,
-        Score_tag: req.body.score_tag
+app.post('/add', async function(req, res) {
+    const Base_URL ='https://api.meaningcloud.com/sentiment-2.1?';
+    const {userUrl} = req.body;
+    //URL meaning cloud API
+    const URL = `${Base_URL}key=${apiKey}&url=${userUrl}&lang=en`;
+    const response = await fetch(URL)
+    try{
+    const data = await response.json()
+    projectData = {
+        score_tag:data.score_tag,
+        agreement:data.agreement,
+        subjectivity:data.subjectivity,
+        confidence:data.confidence,
+        irony:data.irony
+       }
+    console.log(projectData)
+    res.send(projectData)
+    }catch(error){
+        console.log(error)
     }
-    projectData=EntryData;
-}
-res.send(projectData)
-
-
+})
