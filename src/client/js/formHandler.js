@@ -8,16 +8,15 @@ function handleSubmit(event) {
     // check what text was put into the form field
     Client.checkForName(userInput)
     console.log("::: Form Submitted :::")
-    .then(res => res.json())
-    .then(function(data) {
-        postData('/addData' , {url: data.userInput});
+    .then(res => {
+        postData();
         UpdateUI();
     })
 }
 
-const postData = async (url = '' , data = {})=>{
+const postData = async (url = "http://localhost:8081/addData" , data = {})=>{
     console.log(data);
-    const res = await fetch(url , {
+    const res = await fetch('http://localhost:8081/addData' , {
         method: 'POST',
         credentials: 'same-origin' ,
         headers: {
