@@ -1,10 +1,6 @@
-import { response } from "express"
-
-const userInput = document.getElementById('InputBox').value
-
 function handleSubmit(event) {
     event.preventDefault()
-
+    const userInput = document.getElementById('InputBox').value
     // check what text was put into the form field
     Client.checkForName(userInput)
     console.log("::: Form Submitted :::")
