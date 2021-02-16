@@ -41,11 +41,11 @@ const UpdateUI = async ()=> {
     const res = await fetch('/test');
     try{
         const alldata = await res.json();
-        document.getElementById('Irony').innerHTML=alldata.irony;
-        document.getElementById('Agreement').innerHTML=alldata.agreement;
-        document.getElementById('Confidence').innerHTML=alldata.confidence;
-        document.getElementById('Subjectivity').innerHTML=alldata.subjectivity;
-        document.getElementById('Score_tag').innerHTML=alldata.score_tag;
+        document.getElementById('Irony').innerHTML=`Irony: ${alldata.irony}`;
+        document.getElementById('Agreement').innerHTML=`Agreement: ${alldata.agreement}`;
+        document.getElementById('Confidence').innerHTML=`Confidence: ${alldata.confidence}`;
+        document.getElementById('Subjectivity').innerHTML=`Subjectivity: ${alldata.subjectivity}`;
+        document.getElementById('Score_tag').innerHTML=`Score_tag: ${alldata.score_tag}`;
     }catch(error) {
         console.log('There Is An Error' , error)
     }
