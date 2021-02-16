@@ -9,7 +9,7 @@ function handleSubmit(event) {
     Client.checkForName(userInput)
     console.log("::: Form Submitted :::")
     .then(res => {
-        postData();
+        postData(userInput);
         UpdateUI();
     })
 }
