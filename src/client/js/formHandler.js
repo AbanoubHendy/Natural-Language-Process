@@ -1,18 +1,15 @@
-function handleSubmit(event) {
+async function handleSubmit(event) {
     event.preventDefault()
     const userInput = document.getElementById('formText').value
     // check what text was put into the form field
     Client.checkForName(userInput)
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081')
-    .then(res => {
-        postData(userInput);
-        UpdateUI();
-    });
+    // fetch('http://localhost:8081')
+    const res = await postData('http://localhost:8081/add', { userInput })
+    UpdateUI(res);
 }
-
 const postData = async (url = "http://localhost:8081/add" , data = {})=>{
-    console.log(data);
+    console.log('data => ', {url, data })
     const res = await fetch('http://localhost:8081/add' , {
         method: 'POST',
         credentials: 'same-origin' ,
@@ -29,20 +26,15 @@ const postData = async (url = "http://localhost:8081/add" , data = {})=>{
         console.log('Therre Is An Error' , error)
     }
 }
-
-
-const UpdateUI = async ()=> {
-    const res = await fetch('/test');
+const UpdateUI = async res => {
     try{
-        const alldata = await res.json();
-        document.getElementById('Irony').innerHTML=`Irony: ${alldata.irony}`;
-        document.getElementById('Agreement').innerHTML=`Agreement: ${alldata.agreement}`;
-        document.getElementById('Confidence').innerHTML=`Confidence: ${alldata.confidence}`;
-        document.getElementById('Subjectivity').innerHTML=`Subjectivity: ${alldata.subjectivity}`;
-        document.getElementById('Score_tag').innerHTML=`Score_tag: ${alldata.score_tag}`;        
+        document.getElementById('Irony').innerHTML=`Irony: ${res.irony}`;
+        document.getElementById('Agreement').innerHTML=`Agreement: ${res.agreement}`;
+        document.getElementById('Confidence').innerHTML=`Confidence: ${res.confidence}`;
+        document.getElementById('Subjectivity').innerHTML=`Subjectivity: ${res.subjectivity}`;
+        document.getElementById('Score_tag').innerHTML=`Score_tag: ${res.score_tag}`;        
     }catch(error) {
         console.log('There Is An Error' , error)
     }
 };
-
 export { handleSubmit }
