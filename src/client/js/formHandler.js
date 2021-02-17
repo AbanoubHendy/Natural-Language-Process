@@ -1,13 +1,14 @@
 function handleSubmit(event) {
     event.preventDefault()
-    const userInput = document.getElementById('InputBox').value
+    const userInput = document.getElementById('formText').value
     // check what text was put into the form field
     Client.checkForName(userInput)
     console.log("::: Form Submitted :::")
+    fetch('http://localhost:8081')
     .then(res => {
         postData(userInput);
         UpdateUI();
-    })
+    });
 }
 
 const postData = async (url = "http://localhost:8081/add" , data = {})=>{
@@ -38,7 +39,7 @@ const UpdateUI = async ()=> {
         document.getElementById('Agreement').innerHTML=`Agreement: ${alldata.agreement}`;
         document.getElementById('Confidence').innerHTML=`Confidence: ${alldata.confidence}`;
         document.getElementById('Subjectivity').innerHTML=`Subjectivity: ${alldata.subjectivity}`;
-        document.getElementById('Score_tag').innerHTML=`Score_tag: ${alldata.score_tag}`;
+        document.getElementById('Score_tag').innerHTML=`Score_tag: ${alldata.score_tag}`;        
     }catch(error) {
         console.log('There Is An Error' , error)
     }

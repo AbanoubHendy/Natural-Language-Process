@@ -19,7 +19,7 @@ form.Subform {
     padding: 60px;
 }
 
-input#name{
+input#formText{
     @extend %input-shared;
     font-family: $font-primary;
     font-style: $font-italic-style;
